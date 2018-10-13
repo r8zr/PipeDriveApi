@@ -9,11 +9,12 @@ namespace PipeDriveApi
 {
     public class PipeDriveClient : IPipeDriveClient
     {
+        private const int DefaultApiRate = 99;
         private readonly RestClient _Client;
         private readonly string _ApiToken;
         private readonly TimeLimiter _TimeContraint;
 
-        public PipeDriveClient(string apiToken)
+        public PipeDriveClient(string apiToken, int apiRate = DefaultApiRate)
         {
             _Client = new RestClient("https://api.pipedrive.com/v1");
             _Client.AddHandler("application/json", PipeDriveJsonSerializer.Default);
@@ -25,7 +26,7 @@ namespace PipeDriveApi
             _ApiToken = apiToken;
 
             // Fly under the radar by doing only 99 requests per 10 seconds
-            _TimeContraint = TimeLimiter.GetFromMaxCountByInterval(99, TimeSpan.FromSeconds(10));
+            _TimeContraint = TimeLimiter.GetFromMaxCountByInterval(apiRate, TimeSpan.FromSeconds(10));
         }
 
         public async Task ExecuteRequestAsync(IRestRequest request)
