@@ -10,18 +10,24 @@
 var myKey = "MY_PIPEDRIVE_API_KEY";
 var client = new PipeDriveClient(myKey);
 
-var emails = await client.Activities.GetAllByType("email");
-var deals = await client.Deals.GetAllAsync();
-var persons = await client.Persons.GetAllAsync();
+var activityService = new ActivityEntityService<Activity>(client);
+var emails = await activityService.GetAllByType("email");
+
+var dealsService = new DealEntityService<Deal>(client);
+var deals = await dealsService.GetAllAsync();
+
+var personsService = new PersonEntityService<Person>(client);
+var persons = await personsService.GetAllAsync();
 ```
 
 ## Example - Custom Fields
 
 ```cs
 var myKey = "MY_PIPEDRIVE_API_KEY";
-var client = new PipeDriveClient<Person, MyCustomOrganization,Deal,Product>(myKey);
+var client = new PipeDriveClient(myKey);
 
-var orgs = await client.Organizations.GetAsync();
+var orgService = new OrganizationEntityService<MyCustomOrganization>(client);
+var orgs = await orgService.GetAsync();
 
 public class MyCustomOrganization : Organization
 {
@@ -29,4 +35,3 @@ public class MyCustomOrganization : Organization
    public string FavoriteShoeSize { get; set; }
 }
 ```
-
