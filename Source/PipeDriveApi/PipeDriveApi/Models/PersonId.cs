@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PipeDriveApi
+namespace PipeDriveApi.Models
 {
     public class PersonId
     {

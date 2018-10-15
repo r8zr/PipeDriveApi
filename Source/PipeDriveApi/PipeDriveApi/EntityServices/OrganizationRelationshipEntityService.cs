@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using PipeDriveApi.Models;
+using PipeDriveApi.Response;
 using RestSharp;
 
 namespace PipeDriveApi.EntityServices

@@ -1,4 +1,4 @@
-﻿namespace PipeDriveApi.EntityServices
+﻿namespace PipeDriveApi.Models
 {
     public class Sort
     {

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using PipeDriveApi.Response;
 using RestSharp;
 
 namespace PipeDriveApi

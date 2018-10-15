@@ -95,6 +95,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserId.cs" />
     <Compile Include="Models\WebhookPost.cs" />
+    <Compile Include="Response\DeleteResponse.cs" />
     <Compile Include="RestRequestExtensions.cs" />
     <Compile Include="Response\PaginatedPipeDriveResponse.cs" />
     <Compile Include="Response\PipeDriveResponse.cs" />

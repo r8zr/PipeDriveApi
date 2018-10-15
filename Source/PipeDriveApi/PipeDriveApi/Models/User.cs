@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PipeDriveApi
+namespace PipeDriveApi.Models
 {
     public class User : BaseEntity
     {

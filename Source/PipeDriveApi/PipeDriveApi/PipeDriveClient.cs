@@ -4,6 +4,7 @@ using RestSharp;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using PipeDriveApi.Response;
 
 namespace PipeDriveApi
 {
@@ -44,11 +45,13 @@ namespace PipeDriveApi
                 }
             });
         }
+
         public async Task<T> ExecuteRequestAsync<T>(IRestRequest request) where T : new()
         {
             var response = await ExecuteRequestWithCustomResponseAsync<PipeDriveResponse<T>, T>(request);
             return response.Data;
         }
+
         public async Task<TResponse> ExecuteRequestWithCustomResponseAsync<TResponse, T>(IRestRequest request)
             where TResponse : PipeDriveResponse<T>, new()
         {
@@ -59,17 +62,11 @@ namespace PipeDriveApi
 
                 Debug.WriteLine($"{DateTime.UtcNow:s} {request.Method} {request.Resource}");
                 var response = await _Client.ExecuteTaskAsync<TResponse>(request);
-                if (response.ResponseStatus == ResponseStatus.Completed)
-                {
-                    if (response.Data.Success)
-                        return response.Data;
-                    else
-                        throw new PipeDriveException((response.Data).Error);
-                }
-                else
-                {
+                if (response.ResponseStatus != ResponseStatus.Completed)
                     throw response.ErrorException;
-                }
+                if (response.Data.Success)
+                    return response.Data;
+                throw new PipeDriveException((response.Data).Error);
             });
         }
     }

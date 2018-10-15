@@ -1,4 +1,6 @@
-﻿namespace PipeDriveApi.EntityServices
+﻿using PipeDriveApi.Models;
+
+namespace PipeDriveApi.EntityServices
 {
     public class OrganizationFieldEntityService<T> : PagingEntityService<T> 
         where T : Field

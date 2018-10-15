@@ -1,4 +1,6 @@
-﻿namespace PipeDriveApi.EntityServices
+﻿using PipeDriveApi.Models;
+
+namespace PipeDriveApi.EntityServices
 {
     public class ActivityTypeEntityService<T> : EntityService<T>
         where T : ActivityType

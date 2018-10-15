@@ -1,4 +1,6 @@
-﻿namespace PipeDriveApi.EntityServices
+﻿using PipeDriveApi.Models;
+
+namespace PipeDriveApi.EntityServices
 {
     public class UserEntityService<TUser> : EntityService<TUser>
         where TUser : User

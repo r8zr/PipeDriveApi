@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using PipeDriveApi.Models;
 using RestSharp;
 
 namespace PipeDriveApi.EntityServices

@@ -1,4 +1,4 @@
-﻿namespace PipeDriveApi
+﻿namespace PipeDriveApi.Models
 {
     /// <summary> Used in custom fields </summary>
     public class UserId

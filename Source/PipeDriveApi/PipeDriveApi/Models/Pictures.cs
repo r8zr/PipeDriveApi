@@ -1,4 +1,4 @@
-﻿namespace PipeDriveApi
+﻿namespace PipeDriveApi.Models
 {
     public class Pictures
     {
